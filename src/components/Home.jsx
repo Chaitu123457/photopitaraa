@@ -4,17 +4,26 @@ import { Button } from '@/components/ui/button'
 import { Heart, Award, Users, Camera, Star, ChevronLeft, ChevronRight } from 'lucide-react'
 import logo from '../assets/photopitara_logo.jpeg'
 
-// Wedding photos for slideshow
+// Wedding and pre-wedding photos for slideshow
 import wedding1 from '../assets/20230217042713_IMG_1705.jpg'
 import wedding2 from '../assets/TX9A3951_resized.jpg'
 import wedding3 from '../assets/0C5A5517(2).jpg'
 import wedding4 from '../assets/CN7B6242.JPG'
 import wedding5 from '../assets/406A8788.jpg'
+import wedding6 from '../assets/1X2A0098.JPG'
+import wedding7 from '../assets/091A0057.jpg'
+import wedding8 from '../assets/TX9A3990.JPG'
+import wedding9 from '../assets/1X2A0091.JPG'
+import wedding10 from '../assets/TX9A3988.JPG'
 
 // Wedding photos for featured work
 import featuredWedding1 from '../assets/1X2A0098.JPG'
 import featuredWedding2 from '../assets/091A0057.jpg'
 import featuredWedding3 from '../assets/TX9A3990.JPG'
+
+// Ghibli images for team section
+import ghibliFounder1 from '../assets/ghibli_founder1.png'
+import ghibliFounder2 from '../assets/ghibli_founder2.png'
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -24,7 +33,12 @@ const Home = () => {
     { src: wedding2, alt: "Romantic Couple Portrait" },
     { src: wedding3, alt: "Wedding Reception Moments" },
     { src: wedding4, alt: "Traditional Wedding Rituals" },
-    { src: wedding5, alt: "Candid Wedding Photography" }
+    { src: wedding5, alt: "Candid Wedding Photography" },
+    { src: wedding6, alt: "Pre-Wedding Couple Shoot" },
+    { src: wedding7, alt: "Elegant Wedding Portrait" },
+    { src: wedding8, alt: "Wedding Day Celebrations" },
+    { src: wedding9, alt: "Intimate Wedding Moments" },
+    { src: wedding10, alt: "Pre-Wedding Romance" }
   ]
 
   useEffect(() => {
@@ -45,12 +59,12 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Dynamic Slideshow Hero Section */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative slideshow-height h-screen overflow-hidden slideshow-container">
         <div className="absolute inset-0">
           {slideImages.map((image, index) => (
             <div
               key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
+              className={`absolute inset-0 slide-transition ${
                 index === currentSlide ? 'opacity-100' : 'opacity-0'
               }`}
             >
@@ -65,27 +79,27 @@ const Home = () => {
         </div>
         
         {/* Slideshow Content */}
-        <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="relative z-10 flex items-center justify-center h-full mobile-padding">
           <div className="text-center text-white px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="hero-text text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="text-orange-300">Capturing</span>
               <br />
               <span className="text-green-300">Timeless</span>
               <br />
               <span className="text-pink-300">Moments</span>
             </h1>
-            <p className="text-xl lg:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="hero-subtitle text-xl lg:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
               Where every frame tells a story, and every story becomes a treasured memory. 
               Experience luxury photography that transcends the ordinary.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/portfolio">
-                <Button className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                <Button className="mobile-button bg-green-700 hover:bg-green-800 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 btn-primary">
                   View Portfolio
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                <Button variant="outline" className="mobile-button border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 btn-outline">
                   Get In Touch
                 </Button>
               </Link>
@@ -96,13 +110,15 @@ const Home = () => {
         {/* Slideshow Navigation */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 focus-visible"
+          aria-label="Previous slide"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 focus-visible"
+          aria-label="Next slide"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -113,9 +129,10 @@ const Home = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 focus-visible ${
                 index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'
               }`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
@@ -155,42 +172,42 @@ const Home = () => {
       </section>
 
       {/* Meet the Team Section - Inspired by reference */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-800 mb-4 tracking-wide">MEET THE TEAM</h2>
+      <section className="mobile-spacing py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto mobile-padding px-4 sm:px-6 lg:px-8">
+          <div className="text-center mobile-mb mb-16">
+            <h2 className="section-title text-5xl font-bold text-gray-800 mb-4 tracking-wide elegant-text">MEET THE TEAM</h2>
             <p className="text-xl text-gray-600 italic">"Photography is a love affair with life"</p>
             <p className="text-lg text-gray-500 mt-2">- Burk Uzzle</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="text-center">
-              <div className="relative mb-8">
-                <div className="w-80 h-80 mx-auto rounded-lg overflow-hidden shadow-2xl">
-                  <img src={wedding1} alt="Lead Photographer" className="w-full h-full object-cover" />
+          <div className="grid grid-cols-1 md:grid-cols-2 mobile-gap gap-16 items-center">
+            <div className="text-center mobile-text-center">
+              <div className="relative mobile-mb mb-8">
+                <div className="team-image w-80 h-80 mx-auto rounded-lg overflow-hidden shadow-2xl image-hover">
+                  <img src={ghibliFounder1} alt="Kartik Patidar" className="w-full h-full object-cover" />
                 </div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-white rounded-lg shadow-lg flex items-center justify-center">
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-white rounded-lg shadow-lg flex items-center justify-center hover-lift">
                   <Camera className="w-12 h-12 text-orange-600" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">Aswin K Nair</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2 modern-text">Kartik Patidar</h3>
               <p className="text-lg text-gray-600 mb-4">Founder | CEO</p>
               <p className="text-gray-600 max-w-sm mx-auto">
                 Passionate about capturing authentic emotions and creating timeless memories through the lens.
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="relative mb-8">
-                <div className="w-80 h-80 mx-auto rounded-lg overflow-hidden shadow-2xl">
-                  <img src={wedding2} alt="Co-Founder" className="w-full h-full object-cover" />
+            <div className="text-center mobile-text-center">
+              <div className="relative mobile-mb mb-8">
+                <div className="team-image w-80 h-80 mx-auto rounded-lg overflow-hidden shadow-2xl image-hover">
+                  <img src={ghibliFounder2} alt="Kartik Patidar" className="w-full h-full object-cover" />
                 </div>
-                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-white rounded-lg shadow-lg flex items-center justify-center">
+                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-white rounded-lg shadow-lg flex items-center justify-center hover-lift">
                   <Camera className="w-12 h-12 text-green-600" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">Sreenath N Unnikrishnan</h3>
-              <p className="text-lg text-gray-600 mb-4">Co-Founder</p>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2 modern-text">Kartik Patidar</h3>
+              <p className="text-lg text-gray-600 mb-4">Team</p>
               <p className="text-gray-600 max-w-sm mx-auto">
                 Expert in cinematic storytelling and creating visual narratives that touch hearts.
               </p>

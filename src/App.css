@@ -376,3 +376,228 @@ html {
 }
 
 
+
+
+/* Enhanced Mobile Responsive Styles */
+.slideshow-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slideshow-height {
+  height: 100vh;
+  min-height: 600px;
+}
+
+.slide-transition {
+  transition: opacity 1000ms ease-in-out;
+}
+
+.hero-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+}
+
+.btn-outline {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.elegant-text {
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+.modern-text {
+  font-family: 'Inter', sans-serif;
+}
+
+.team-image {
+  transition: transform 0.3s ease;
+}
+
+.image-hover:hover .team-image {
+  transform: scale(1.05);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .slideshow-height {
+    height: 100vh;
+    min-height: 500px;
+  }
+  
+  .mobile-padding {
+    padding: 0 1rem;
+  }
+  
+  .mobile-spacing {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .mobile-mb {
+    margin-bottom: 2rem;
+  }
+  
+  .mobile-gap {
+    gap: 2rem;
+  }
+  
+  .mobile-text-center {
+    text-align: center;
+  }
+  
+  .mobile-button {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .hero-text {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .team-image {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slideshow-height {
+    min-height: 450px;
+  }
+  
+  .hero-text {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .team-image {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .mobile-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-text {
+    font-size: 3.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .team-image {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Large Screen Optimizations */
+@media (min-width: 1440px) {
+  .slideshow-height {
+    height: 100vh;
+    min-height: 800px;
+  }
+  
+  .hero-text {
+    font-size: 5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animation Enhancements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .slide-transition,
+  .team-image,
+  .hover-lift {
+    transition: none;
+  }
+  
+  .fade-in-up {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .hero-text,
+  .hero-subtitle {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  }
+  
+  .btn-primary {
+    border: 2px solid #ffffff;
+  }
+  
+  .btn-outline {
+    border: 3px solid #ffffff;
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
